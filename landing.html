@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>B‑Energy | Landing Solar</title>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Estilos base -->
+  <style>
+    :root {
+      /* Paleta oficial */
+      --color-primary: #74BECF;
+      --color-secondary: #1B1813;
+      --color-accent:   #C59C66;
+      --color-neutral:  #495158;
+      --color-light:    #FDFDFD;
+      --font-sans: 'Poppins', sans-serif;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: var(--font-sans); color: var(--color-secondary); background: var(--color-light); line-height: 1.6; }
+    img { max-width: 100%; display: block; }
+    a  { color: var(--color-primary); text-decoration: none; }
+    h1, h2, h3 { font-weight: 600; }
+
+    /* Layout util */
+    .container { width: 90%; max-width: 1280px; margin: 0 auto; }
+    .btn-primary {
+      background: var(--color-primary);
+      color: var(--color-light);
+      padding: 0.9rem 2rem;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: background .25s;
+    }
+    .btn-primary:hover { background: var(--color-accent); }
+
+    /* HERO */
+    #hero {
+      min-height: 100vh;
+      background: url('assets/img_bg_hero.webp') center/cover no-repeat;
+      position: relative;
+      display: flex; align-items: center;
+    }
+    #hero::after { content: ""; position: absolute; inset: 0; background: rgba(0,0,0,.6); }
+    #hero .content { position: relative; z-index: 2; color: var(--color-light); text-align: center; gap: 2rem; }
+    #hero h1 { font-size: clamp(2rem, 6vw, 3.5rem); margin-bottom: 1rem; }
+    #hero p.lead { font-size: 1.1rem; margin-bottom: 1.5rem; }
+
+    /* Calculator */
+    #calc { display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center; }
+    #calc input, #calc select { padding: 0.8rem 1rem; border: 1px solid var(--color-neutral); border-radius: 6px; min-width: 220px; }
+
+    /* Section generic */
+    section { padding: 4.5rem 0; }
+    section h2 { text-align: center; margin-bottom: 2rem; font-size: 2rem; }
+
+    /* BENEFITS */
+    .benefits { display: grid; gap: 2rem; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+    .benefit-card { background: var(--color-light); padding: 2rem; border: 1px solid var(--color-neutral); border-radius: 12px; text-align: center; }
+    .benefit-card span.icon { font-size: 2rem; display: block; margin-bottom: 0.8rem; color: var(--color-primary); }
+
+    /* PROCESS */
+    .process-steps { display: grid; gap: 2rem; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); text-align: center; }
+    .step { padding: 2rem; border-radius: 12px; background: var(--color-light); border: 1px dashed var(--color-primary); }
+
+    /* TESTIMONIALS */
+    #testimonials { background: var(--color-primary); color: var(--color-secondary); }
+    .testimonial-slide { max-width: 600px; margin: 0 auto; text-align: center; }
+
+    /* FAQ */
+    .faq-item { border-bottom: 1px solid var(--color-neutral); }
+    .faq-question { padding: 1rem 0; cursor: pointer; display: flex; justify-content: space-between; }
+    .faq-answer { max-height: 0; overflow: hidden; transition: max-height .35s ease; }
+
+    /* CTA FINAL */
+    #cta-final { background: var(--color-secondary); color: var(--color-light); text-align: center; }
+    #cta-final h2 { margin-bottom: 1rem; }
+    #cta-final form { display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center; }
+    #cta-final input[type="file"] { color: var(--color-light); }
+
+    /* Footer */
+    footer { background: var(--color-secondary); color: var(--color-light); padding: 2rem 0; text-align: center; font-size: 0.9rem; }
+
+    /* Responsive tweaks */
+    @media (max-width: 600px) {
+      #calc { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+  <!-- HERO -->
+  <header id="hero">
+    <div class="container content">
+      <h1>Instalá energía solar y ahorrá 30‑50 % desde el primer mes</h1>
+      <p class="lead">Comprobá gratis si tu techo aplica en 30 seg</p>
+
+      <!-- Calculator form -->
+      <form id="calc" onsubmit="event.preventDefault(); /* TODO: lógica */">
+        <select name="tipo" required>
+          <option value="" disabled selected>Hogar o Negocio?</option>
+          <option value="Hogar">Hogar</option>
+          <option value="Negocio">Negocio</option>
+        </select>
+        <input type="number" name="factura" placeholder="Factura mensual (ARS)" required />
+        <input type="number" name="superficie" placeholder="Superficie disponible (m²)" required />
+        <button class="btn-primary" type="submit">Diagnóstico Gratis</button>
+      </form>
+    </div>
+  </header>
+
+  <!-- PAIN‑AGITATE‑SOLVE -->
+  <section id="pain" class="container">
+    <h2>¿Por qué ahora?</h2>
+    <p>Gráfico de aumentos tarifarios (placeholder SVG) + copy breve.</p>
+  </section>
+
+  <!-- BENEFITS -->
+  <section id="benefits" class="container">
+    <h2>Beneficios clave</h2>
+    <div class="benefits">
+      <div class="benefit-card"><span class="icon">💵</span><h3>Ahorro inmediato</h3><p>Amortización 18‑24 meses.</p></div>
+      <div class="benefit-card"><span class="icon">🏡</span><h3>Valoriza tu propiedad</h3><p>+20 % de valor promedio.</p></div>
+      <div class="benefit-card"><span class="icon">🌍</span><h3>Cero emisiones</h3><p>‑1 ton CO₂ al año.</p></div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section id="process" class="container">
+    <h2>Tu camino a la energía solar</h2>
+    <div class="process-steps">
+      <div class="step"><h3>1. Diagnóstico</h3><p>Recibís tu propuesta en 24 h.</p></div>
+      <div class="step"><h3>2. Instalación</h3><p>Montaje profesional en 1 día.</p></div>
+      <div class="step"><h3>3. Ahorro</h3><p>Empieza a reflejarse en tu próxima factura.</p></div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section id="testimonials">
+    <div class="container">
+      <h2>Historias reales</h2>
+      <div class="testimonial-slide">
+        <!-- Carousel placeholder -->
+        <blockquote>“Pagaba 55k ARS, ahora 32k. ¡Y el techo se ve genial!”<br><small>María – Villa Crespo</small></blockquote>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" class="container">
+    <h2>Preguntas frecuentes</h2>
+    <div class="faq-item">
+      <div class="faq-question">¿Cuánto tarda la instalación?<span>+</span></div>
+      <div class="faq-answer"><p>Normalmente un día para residencias estándar.</p></div>
+    </div>
+    <!-- Repetir faq-item -->
+  </section>
+
+  <!-- CTA FINAL -->
+  <section id="cta-final">
+    <div class="container">
+      <h2>Solo 5 instalaciones mensuales para garantizar calidad.</h2>
+      <p>Reservá la tuya ahora.</p>
+      <form onsubmit="event.preventDefault(); /* TODO */">
+        <input type="text" name="nombre" placeholder="Tu nombre" required />
+        <input type="tel" name="whatsapp" placeholder="WhatsApp" required />
+        <input type="file" name="boleta" accept="image/*,.pdf" />
+        <button class="btn-primary" type="submit">Quiero mi propuesta</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <p>© <span id="year"></span> B‑Energy. Todos los derechos reservados.</p>
+      <p><a href="#">Política de privacidad</a> · <a href="#">Aviso legal</a></p>
+    </div>
+  </footer>
+
+  <!-- Scripts básicos -->
+  <script>
+    // Año automático en footer
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // FAQ toggle
+    document.querySelectorAll('.faq-question').forEach(q => {
+      q.addEventListener('click', () => {
+        const answer = q.nextElementSibling;
+        answer.style.maxHeight = answer.style.maxHeight ? null : answer.scrollHeight + 'px';
+      });
+    });
+
+    // TODO: Calculator & GA events logic
+  </script>
+</body>
+</html>
